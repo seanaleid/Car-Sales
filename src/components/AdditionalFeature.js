@@ -3,6 +3,7 @@ import React from 'react';
 //redux
 import { connect } from "react-redux";
 
+//actions
 import { addFeature } from "../actions"
 
 const AdditionalFeature = props => {
