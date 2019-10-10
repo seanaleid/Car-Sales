@@ -23,13 +23,21 @@ export const mainReducer = (state = initialState, action) => {
     switch(action.type) {
         case ADD_FEATURE:
             console.log(`Adding feature to car`, state)
-            const objectToReturn = {
+            return {
                 ...state,
-                additionalPrice: (state.additionalPrice + action.payload),
-                car: {...state.car, features: [...state.car.features, action.payload]},
-                store: [...state.store, action.payload]
+                // additionalPrice: (state.additionalPrice + action.payload),
+                car: {
+                    ...state.car, 
+                    price: state.car.price + action.payload.price,
+                    features: [
+                        ...state.car.features, 
+                        action.payload
+                    ]
+                },
+                store: state.store.filter(item => {
+                    return item.id !== action.payload.id
+                })  
             }
-            return (objectToReturn);
         default: return state;
     }
 }

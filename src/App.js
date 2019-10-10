@@ -12,7 +12,7 @@ import { connect } from "react-redux";
 import { addFeature } from "./actions/index";
 
 
-const App = ({state}) => {
+const App = ({ state, addFeature }) => {
   console.log(state);
   // const state = {
   //   additionalPrice: 0,
@@ -48,7 +48,7 @@ const App = ({state}) => {
         <AddedFeatures car={state.car} />
       </div>
       <div className="box">
-        <AdditionalFeatures store={state.store} />
+        <AdditionalFeatures store={state.store} buyItem={buyItem}/>
         <Total car={state.car} additionalPrice={state.additionalPrice} />
       </div>
     </div>

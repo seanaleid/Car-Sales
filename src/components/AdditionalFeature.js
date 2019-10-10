@@ -9,21 +9,21 @@ const AdditionalFeature = props => {
   console.log(`<AdditionalFeature />`, props);
   console.log(props.feature);
 
-  const handleClick = e => {
-    e.preventDefault();
-    // console.log(props.feature);
-    // console.log(props.state);
-    // console.log(e);
-    // console.log(handleClick());
-    addFeature(props.feature, props.state)
-  }
+  // const handleClick = e => {
+  //   e.preventDefault();
+  //   // console.log(props.feature);
+  //   // console.log(props.state);
+  //   // console.log(e);
+  //   // console.log(handleClick());
+  //   addFeature(props.feature, props.state)
+  // }
 
   return (
     <li>
       {/* Add an onClick that will let you add a feature to your car */}
       <button 
         className="button"
-        onClick={handleClick}
+        onClick={() => props.buyItem(props.feature)}
       >
         Add
       </button>
