@@ -1,27 +1,42 @@
 import React from 'react';
 
 //redux
-// import { connect } from "react-redux";
+import { connect } from "react-redux";
+
+import { addFeature } from "../actions"
 
 const AdditionalFeature = props => {
-  console.log(props);
+  console.log(`<AdditionalFeature />`, props);
+  console.log(props.feature);
+
+  const handleClick = e => {
+    e.preventDefault();
+    // console.log(props.feature);
+    // console.log(props.state);
+    // console.log(e);
+    // console.log(handleClick());
+    addFeature(props.feature, props.state)
+  }
+
   return (
     <li>
       {/* Add an onClick that will let you add a feature to your car */}
-      <button className="button">Add</button>
+      <button 
+        className="button"
+        onClick={handleClick}
+      >
+        Add
+      </button>
       {props.feature.name} (+{props.feature.price})
     </li>
   );
 };
 
-// const mapStateToProps = state => {
-//   return {
-//     store: {
-//       name: state.name,
-//       price: state.price
-//     }
-//   }
-// }
+const mapStateToProps = state => {
+  return {
+    state: state
+  }
+}
 
-// export default connect(mapStateToProps, {} )(AdditionalFeature);
-export default AdditionalFeature;
+export default connect(mapStateToProps, { addFeature } )(AdditionalFeature);
+// export default AdditionalFeature;

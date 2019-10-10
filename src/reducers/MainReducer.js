@@ -22,16 +22,22 @@ export const mainReducer = (state = initialState, action) => {
     console.log(state.store[state.store.id]);
     switch(action.type) {
         case ADD_FEATURE:
+            console.log(`Adding feature to car`, state)
+            const objectToReturn = {
+                ...state,
+                car: {
+                    ...Selection.payload
+                },
+            }
+            console.log(objectToReturn);
             return {
                 ...state, 
                 car: {
-                    features: [
-                        action.payload
-                    ]
+                    ...action.payload
             }
         };
         default: return state;
     }
 }
 
-// CASE_ACTION_NAME_HERE_AS_VARIABLE_DONT_FORGET_TO_IMPORT_FROM_ACTIONS 
+export default mainReducer;
