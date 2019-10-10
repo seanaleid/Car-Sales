@@ -8,6 +8,9 @@ import Total from './components/Total';
 //redux
 import { connect } from "react-redux";
 
+//components
+import { addFeature } from "./actions/index";
+
 
 const App = ({state}) => {
   console.log(state);
@@ -34,6 +37,8 @@ const App = ({state}) => {
 
   const buyItem = item => {
     // dipsatch an action here to add an item
+    return addFeature(item);
+
   };
 
   return (
@@ -56,4 +61,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps, {})(App);
+export default connect(mapStateToProps, { addFeature })(App);

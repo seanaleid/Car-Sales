@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 //redux
 // import { connect } from "react-redux";
@@ -6,11 +6,6 @@ import React, { useState } from 'react';
 
 const AddedFeature = props => {
   console.log(props);
-  const [addNewFeature, setAddNewFeature] = useState("");
-
-  const handleChanges = e => {
-    addNewFeature(e.target.value);
-  };
   
   return (
     <li>

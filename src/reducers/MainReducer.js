@@ -19,23 +19,17 @@ const initialState = {
 
 export const mainReducer = (state = initialState, action) => {
     console.log(`This is initialState and action from mainReducer.js`, state, action)
-    console.log(state.store[state.store.id]);
+    console.log(action.payload);
     switch(action.type) {
         case ADD_FEATURE:
             console.log(`Adding feature to car`, state)
             const objectToReturn = {
                 ...state,
-                car: {
-                    ...Selection.payload
-                },
+                additionalPrice: (state.additionalPrice + action.payload),
+                car: {...state.car, features: [...state.car.features, action.payload]},
+                store: [...state.store, action.payload]
             }
-            console.log(objectToReturn);
-            return {
-                ...state, 
-                car: {
-                    ...action.payload
-            }
-        };
+            return (objectToReturn);
         default: return state;
     }
 }
