@@ -28,6 +28,8 @@ export const mainReducer = (state = initialState, action) => {
                 car: {
                     ...state.car, 
                     price: state.car.price + action.payload.price,
+                    name: state.car.name,
+                    image: state.car.image,
                     features: [
                         ...state.car.features, 
                         action.payload
@@ -42,13 +44,17 @@ export const mainReducer = (state = initialState, action) => {
                 ...state,
                 car: {
                     ...state,
-                    price: state.car.price - action.payload,
-                    features: [
-                        ...state.car.features.filter(item => {
+                    name: state.car.name,
+                    image: state.car.image,
+                    price: state.car.price - action.payload.price,
+                    features: state.car.features.filter(item => {
                             return item.id !== action.payload.id
                         })
-                    ]
-                }
+                },
+                store: [
+                    ...state.store,
+                    action.payload
+                ]
             }
 
         default: return state;
